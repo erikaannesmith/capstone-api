@@ -7,5 +7,6 @@ const designersController = require('../../../controllers/designersController')
 
 router.get('/', designersController.index)
 router.post('/', designersController.create)
+router.get('/:id', designersController.show)
 
 module.exports = router;

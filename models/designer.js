@@ -15,6 +15,12 @@ var Designer = {
       .then(function(designer) {
         return designer.rows[0]
       })
+  },
+  find: function(id) {
+    return database.raw('SELECT * FROM designers WHERE id = ?', [id])
+      .then(function(designer) {
+        return designer.rows[0]
+      })
   }
 }
 

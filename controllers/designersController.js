@@ -8,6 +8,18 @@ function index(req, res, next) {
     })
 }
 
+function show(req, res, next) {
+  let id = req.params.id
+  Designer.find(id)
+    .then(designer => {
+      if (!designer) {
+        return res.sendStatus(404)
+      } else {
+        res.json(designer)
+      }
+    })
+}
+
 function create(req, res, next) {
   let company = req.body.company
   let contact = req.body.contact
@@ -35,4 +47,4 @@ function create(req, res, next) {
     })
 }
 
-module.exports = {index, create}
+module.exports = {index, create, show}
