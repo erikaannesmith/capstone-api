@@ -10,12 +10,12 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 var usersApi = require('./routes/api/v1/users')
 var designersApi = require('./routes/api/v1/designers')
+var stylesApi = require('./routes/api/v1/styles')
 
 var app = express();
 
 // cors
 app.use(cors());
-
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -39,6 +39,8 @@ app.use('/', index);
 app.use('/users', users);
 app.use('/api/v1/users', usersApi);
 app.use('/api/v1/designers', designersApi)
+app.use('/api/v1/designers/:id/styles', stylesApi)
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
