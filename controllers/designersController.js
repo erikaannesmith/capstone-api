@@ -28,17 +28,13 @@ function create(req, res, next) {
   let user_id = req.body.user_id
   if (!company) {
     return res.status(422).send({ error: "Company must be filled out." })
-  }
-  else if (!contact) {
+  } else if (!contact) {
     return res.status(422).send({ error: "Contact must be filled out." })
-  }
-  else if (!phone) {
+  } else if (!phone) {
     return res.status(422).send({ error: "Phone must be filled out." })
-  }
-  else if (!email) {
+  } else if (!email) {
     return res.status(422).send({ error: "Email must be filled out." })
-  }
-  else if (!user_id) {
+  } else if (!user_id) {
     return res.status(422).send({ error: "User_id must be filled out." })
   }  
   Designer.new(company, contact, phone, email, user_id)
