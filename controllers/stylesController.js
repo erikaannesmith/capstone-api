@@ -13,12 +13,13 @@ function index(req, res, next) {
 function create(req, res, next) {
   let name = req.body.name
   let description = req.body.description
-  let path = req.baseUrl 
-  let designer_id = path.split('/')[4]
+  let designer_id = req.body.designer_id
   if (!name) {
     return res.status(422).send({ error: "Name must be filled out." })
   } else if (!description) {
     return res.status(422).send({ error: "Description must be filled out." })
+  } else if (!designer_id) {
+    return res.status(422).send({ error: "Designer ID must be provided." })
   }
   Style.new(name, description, designer_id)
     .then((style) => {
