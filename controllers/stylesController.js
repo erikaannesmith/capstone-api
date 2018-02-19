@@ -1,7 +1,9 @@
 var Style = require('../models/styles')
 
 function index(req, res, next) {
-  let designerId = 3
+  console.log(req)
+  let path = req._parsedOriginalUrl.pathname
+  let designerId = path.split('/')[4]
   Style.all(designerId)
     .then(styles => {
       res.status(201).json(styles)
