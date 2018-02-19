@@ -11,6 +11,7 @@ var users = require('./routes/users');
 var usersApi = require('./routes/api/v1/users')
 var designersApi = require('./routes/api/v1/designers')
 var stylesApi = require('./routes/api/v1/styles')
+var designerCommentsApi = require('./routes/api/v1/designerComments')
 
 var app = express();
 
@@ -40,6 +41,7 @@ app.use('/users', users);
 app.use('/api/v1/users', usersApi);
 app.use('/api/v1/designers', designersApi)
 app.use('/api/v1/designers/:id/styles', stylesApi)
+app.use('/api/v1/designers/:id/comments', designerCommentsApi)
 
 
 // catch 404 and forward to error handler

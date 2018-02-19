@@ -1,7 +1,6 @@
 var Style = require('../models/style')
 
 function index(req, res, next) {
-  console.log(req)
   let path = req._parsedOriginalUrl.pathname
   let designerId = path.split('/')[4]
   Style.all(designerId)
