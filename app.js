@@ -12,6 +12,7 @@ var usersApi = require('./routes/api/v1/users')
 var designersApi = require('./routes/api/v1/designers')
 var stylesApi = require('./routes/api/v1/styles')
 var designerCommentsApi = require('./routes/api/v1/designerComments')
+var styleCommentsApi = require('./routes/api/v1/styleComments')
 
 var app = express();
 
@@ -42,7 +43,7 @@ app.use('/api/v1/users', usersApi);
 app.use('/api/v1/designers', designersApi)
 app.use('/api/v1/designers/:id/styles', stylesApi)
 app.use('/api/v1/designers/:id/comments', designerCommentsApi)
-
+app.use('/api/v1/designers/:id/styles/:id/comments', styleCommentsApi)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
