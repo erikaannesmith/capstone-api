@@ -29,7 +29,6 @@ function create(req, res, next) {
 function destroy(req, res, next) {
   let designerId = req.baseUrl.split('/')[4]
   let commentId = req.params.id
-  let pry = require('pryjs'); eval(pry.it)
   DesignerComment.find(designerId, commentId)
     .then(comment => {
       if (!comment) {
