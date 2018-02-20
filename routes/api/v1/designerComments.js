@@ -6,5 +6,6 @@ const database = require('knex')(configuration)
 const designerCommentsController = require('../../../controllers/designerCommentsController')
 
 router.get('/', designerCommentsController.index)
+router.post('/', designerCommentsController.create)
 
 module.exports = router;

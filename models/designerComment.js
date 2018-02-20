@@ -8,6 +8,13 @@ var DesignerComment = {
       .then(function(comments) {
         return comments.rows
       })
+  },
+  new: function(date, body, id) {
+    return database.raw('INSERT INTO designer_comments (date, body, designer_id) VALUES (?, ?, ?) RETURNING *',
+    [date, body, id])
+      .then(function(comment) {
+        return comment.rows[0]
+      })
   }
 }
 
