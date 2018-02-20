@@ -15,6 +15,12 @@ var Style = {
       .then(function(style) {
         return style.rows[0]
       })
+  },
+  find: function(designerId, styleId) {
+    return database.raw('SELECT * FROM styles WHERE designer_id = ? AND id = ?', [designerId, styleId])
+      .then(function(style) {
+        return style.rows[0]
+      })
   }
 }
 

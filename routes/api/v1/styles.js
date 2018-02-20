@@ -6,6 +6,7 @@ const database = require('knex')(configuration)
 const stylesController = require('../../../controllers/stylesController')
 
 router.get('/', stylesController.index)
+router.get('/:id', stylesController.show)
 router.post('/', stylesController.create)
 
 module.exports = router;

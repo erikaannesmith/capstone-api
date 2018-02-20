@@ -9,6 +9,19 @@ function index(req, res, next) {
     })
 }
 
+function show(req, res, next) {
+  let designerId = req.baseUrl.split('/')[4]
+  let styleId = req.params.id
+  Style.find(designerId, styleId)
+    .then(style => {
+      if (!style) {
+        return res.sendStatus(404)
+      } else {
+        res.json(style)
+      }
+    })
+}
+
 function create(req, res, next) {
   let name = req.body.name
   let description = req.body.description
@@ -26,4 +39,4 @@ function create(req, res, next) {
     })
 }
 
-module.exports = {index, create}
+module.exports = {index, create, show}
