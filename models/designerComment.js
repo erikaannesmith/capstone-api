@@ -15,6 +15,18 @@ var DesignerComment = {
       .then(function(comment) {
         return comment.rows[0]
       })
+  },
+  find: function(designerId, commentId) {
+    return database.raw('SELECT * FROM designer_comments WHERE designer_id = ? AND id = ?', [designerId, commentId])
+      .then(function(comment) {
+        return comment.rows[0]
+      })
+  },
+  destroy: function(designerId, commentId) {
+    return database.raw('DELETE FROM designer_comments WHERE designer_id = ? AND id = ?', [designerId, commentId])
+      .then(function(comment) {
+        return comment
+      })
   }
 }
 

@@ -7,5 +7,6 @@ const designerCommentsController = require('../../../controllers/designerComment
 
 router.get('/', designerCommentsController.index)
 router.post('/', designerCommentsController.create)
+router.delete('/:id', designerCommentsController.destroy);
 
 module.exports = router;

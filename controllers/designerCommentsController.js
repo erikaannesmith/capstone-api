@@ -26,4 +26,20 @@ function create(req, res, next) {
     })
 }
 
-module.exports = {index, create}
+function destroy(req, res, next) {
+  let designerId = req.body.designer_id
+  let commentId = req.params.id
+  // let pry = require('pryjs'); eval(pry.it)
+  DesignerComment.find(designerId, commentId)
+    .then(comment => {
+      if (!comment) {
+        return res.sendStatus(404)
+      }
+      else {
+        DesignerComment.destroy(designerId, commentId)
+        return res.sendStatus(200)
+      }
+    })
+}
+
+module.exports = {index, create, destroy}
