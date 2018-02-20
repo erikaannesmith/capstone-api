@@ -17,13 +17,15 @@ var DesignerComment = {
       })
   },
   find: function(designerId, commentId) {
+    let pry = require('pryjs'); eval(pry.it)
     return database.raw('SELECT * FROM designer_comments WHERE designer_id = ? AND id = ?', [designerId, commentId])
-      .then(function(comment) {
-        return comment.rows[0]
-      })
+      .then(response => console.log(response))  
+    // .then(function(comment) {
+    //     return comment.rows[0]
+    //   })
   },
   destroy: function(designerId, commentId) {
-    return database.raw('DELETE FROM designer_comments WHERE designer_id = ? AND id = ?', [designerId, commentId])
+    return database.raw('DELETE FROM designer_comments WHERE id = ? AND designer_id = ?', [commentId, designerId])
       .then(function(comment) {
         return comment
       })
