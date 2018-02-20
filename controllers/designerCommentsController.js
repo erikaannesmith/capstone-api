@@ -30,8 +30,8 @@ function destroy(req, res, next) {
   let designerId = req.baseUrl.split('/')[4]
   let commentId = req.params.id
   DesignerComment.find(designerId, commentId)
-    .then(comment => {
-      if (!comment) {
+  .then(comment => {
+    if (comment.rows.length === 0) {
         return res.sendStatus(404)
       }
       else {

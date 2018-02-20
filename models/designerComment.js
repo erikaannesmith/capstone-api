@@ -18,9 +18,8 @@ var DesignerComment = {
   },
   find: function(designerId, commentId) {
     return database.raw('SELECT * FROM designer_comments WHERE designer_id = ? AND id = ?', [designerId, commentId])
-      .then(response => console.log(response))  
-    .then(function(comment) {
-        return comment.rows[0]
+      .then(function(comment) {
+        return comment
       })
   },
   destroy: function(designerId, commentId) {
