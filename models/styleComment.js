@@ -15,6 +15,18 @@ var StyleComment = {
       .then(function(comment) {
         return comment.rows[0]
       })
+  },
+  find: function(commentId, styleId) {
+    return database.raw('SELECT * FROM style_comments WHERE id = ? AND style_id = ?', [commentId, styleId])
+      .then(function(comment) {
+        return comment
+      })
+  },
+  destroy: function(commentId, styleId) {
+    return database.raw('DELETE FROM style_comments WHERE id = ? AND style_id = ?', [commentId, styleId])
+      .then(function(comment) {
+        return comment
+      })
   }
 }
 

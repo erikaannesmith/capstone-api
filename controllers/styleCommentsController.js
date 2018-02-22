@@ -19,4 +19,18 @@ function create(req, res, next) {
     })
 }
 
-module.exports = {index, create}
+function destroy(req, res, next) {
+  let commentId = req.params.id
+  let styleId = req.baseUrl.split('/')[6]
+  StyleComment.find(commentId, styleId)
+    .then(comment => {
+      if (comment.rows.length === 0) {
+        return res.sendStatus(404)
+      } else {
+        StyleComment.destroy(commentId, styleId)
+        return res.sendStatus(200)
+      }
+    })
+}
+
+module.exports = {index, create, destroy}

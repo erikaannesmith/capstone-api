@@ -7,5 +7,6 @@ const styleCommentsController = require('../../../controllers/styleCommentsContr
 
 router.get('/', styleCommentsController.index)
 router.post('/', styleCommentsController.create)
+router.delete('/:id', styleCommentsController.destroy)
 
 module.exports = router;
