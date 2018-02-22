@@ -8,6 +8,13 @@ var StyleComment = {
       .then(function(comments) {
         return comments.rows
       })
+  },
+  new: function(date, body, id) {
+    return database.raw('INSERT INTO style_comments (date, body, style_id) VALUES (?, ?, ?) RETURNING *', 
+    [date, body, id])    
+      .then(function(comment) {
+        return comment.rows[0]
+      })
   }
 }
 
