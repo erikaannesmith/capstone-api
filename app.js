@@ -13,8 +13,13 @@ var designersApi = require('./routes/api/v1/designers')
 var stylesApi = require('./routes/api/v1/styles')
 var designerCommentsApi = require('./routes/api/v1/designerComments')
 var styleCommentsApi = require('./routes/api/v1/styleComments')
+const passport = require('passport')
+var googleOauthApi = require('./routes/api/v1/googleOauth')
 
 var app = express();
+
+app.use(passport.initialize())
+app.use(passport.session())
 
 // cors
 app.use(cors());
@@ -40,6 +45,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/users', users);
 app.use('/api/v1/users', usersApi);
+app.use('/api/v1/auth/google', googleOauthApi)
 app.use('/api/v1/designers', designersApi)
 app.use('/api/v1/designers/:id/styles', stylesApi)
 app.use('/api/v1/designers/:id/comments', designerCommentsApi)
