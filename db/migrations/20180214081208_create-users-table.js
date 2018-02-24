@@ -1,9 +1,7 @@
 exports.up = function (knex, Promise) {
   let createQuery = `CREATE TABLE users(
     id SERIAL PRIMARY KEY NOT NULL,
-    email TEXT,
-    password VARCHAR,
-    company TEXT
+    email TEXT
   )`
   return knex.raw(createQuery)
 }
