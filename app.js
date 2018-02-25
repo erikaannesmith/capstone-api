@@ -40,6 +40,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/users', users);
 app.use('/api/v1/users', usersApi);
+// app.use('/api/v1/auth/google_oauth2', authApi)
 app.use('/api/v1/designers', designersApi)
 app.use('/api/v1/designers/:id/styles', stylesApi)
 app.use('/api/v1/designers/:id/comments', designerCommentsApi)
