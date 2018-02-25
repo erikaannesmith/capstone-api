@@ -43,4 +43,27 @@ function create(req, res, next) {
     })
 }
 
-module.exports = {index, create, show}
+function update(req, res, next) {
+  let id = req.body.designerId
+  let company = req.body.company
+  let contact = req.body.contact
+  let phone = req.body.phone
+  let email = req.body.email
+  if (!company || !contact || !phone || !email) {
+    return res.status(400).send({ error: "All fields are required." })
+  } else {
+    Designer.edit(id, company, contact, phone, email)
+      .then(designer => {
+        if (!designer) {
+          res.sendStatus(400)
+        } else {
+          Designer.find(id) 
+            .then(editedDesigner => {
+              res.json(editedDesigner)
+            })
+        }
+      })
+  }
+}
+
+module.exports = {index, create, show, update}

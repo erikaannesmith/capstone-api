@@ -21,6 +21,12 @@ var Designer = {
       .then(function(designer) {
         return designer.rows[0]
       })
+  },
+  edit: function(id, company, contact, phone, email) {
+    return database.raw('UPDATE designers SET company = ?, contact = ?, phone = ?, email = ? WHERE id = ?', [company, contact, phone, email, id])
+      .then(function(designer) {
+        return designer
+      })
   }
 }
 
